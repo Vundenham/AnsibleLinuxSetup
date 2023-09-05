@@ -1,0 +1,26 @@
+---
+- name: "Update machine"
+  apt:
+    update_cache: yes
+    force_apt_get: yes #Might get rid of force bit dunno
+    cache_valid_time: 3600 
+  become: true
+  become_method: sudo
+
+- name: "Upgrade packages"
+  apt:
+    upgrade: yes
+    force_apt_get: yes
+  become: true
+  become_method: sudo
+
+- name: "Install/update packages" #Can make list elsewhere if this expands too much
+  package:
+    name:
+      - cowsay
+      - nmap
+      - tmux
+      - responder
+      - vim
+  become: true
+  become_method: sudo

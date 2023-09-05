@@ -1,0 +1,27 @@
+---
+- name: "Microsoft Outlook.py into ansible :)"
+  hosts: localhost
+  connection: local
+
+  vars_prompt:
+    - name: user_confirmation
+      prompt: "Do you want to teardown? (sir yes sir/no)" #sir yes sir for mindfulness authentication
+      private: false
+
+    - name: client_name
+      prompt: "What is the name of the client folder?"
+      private: false
+
+  roles:
+    - role: "roles/teardown"
+      when: user_confirmation == "sir yes sir"
+
+    - role: "roles/updates"
+    - role: "roles/mkdir"
+    - role: "roles/setconfs"
+      vars:
+        users:
+          - username: "{{ ansible_user_id }}"
+    # role for zsh and theme for zsh?
+
+

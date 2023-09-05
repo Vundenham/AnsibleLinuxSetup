@@ -1,0 +1,20 @@
+---
+#- name: "Zip Home Directory"
+#  command: sudo zip -r /tmp/home.zip ~/
+
+
+- name: "Zip Client Directory"
+  archive:
+     path: "{{ ansible_env.HOME }}/{{ client_name }}"
+     dest: "/tmp/{{ client_name }}.zip"
+     format: zip
+  become: true
+  become_method: sudo
+
+- name: "Delete Client Directory"
+  file:
+    path: "{{ ansible_env.HOME }}/{{ client_name }}"
+    state: absent
+    force: yes
+
+

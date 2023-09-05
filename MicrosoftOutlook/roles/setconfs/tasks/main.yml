@@ -1,0 +1,12 @@
+---
+- name: "Copy Tmux Config"
+  copy:
+    src: "{{ role_path }}/files/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}"
+
+- name: "Copy Vim Config"
+  copy:
+    src: "{{ role_path }}/files/.vimrc"
+    dest: "{{ ansible_env.HOME }}"
+  
+  #ssh config? Dunno
