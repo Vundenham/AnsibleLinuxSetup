@@ -22,5 +22,6 @@
       - tmux
       - responder
       - vim
+      - man
   become: true
   become_method: sudo
