@@ -20,7 +20,6 @@
       - cowsay
       - nmap
       - tmux
-      - responder
       - vim
       - man
   become: true
